@@ -7,7 +7,9 @@ RU_CHARS = """ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ.�
 EN_CHARS = """QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>/qwertyuiop[]asdfghjkl;'zxcvbnm,.-"""
 
 RU_RE = re.compile(r'([%s\s]*)$' % re.escape(RU_CHARS))
-EN_RE = re.compile(r'([%s\s]*)$' % re.escape(EN_CHARS))
+# Skip brackets because that we probably meant and then forgot to change layout
+EN_CHARS_TO_MATCH = ''.join(set(EN_CHARS) - set('[]'))
+EN_RE = re.compile(r'([%s\s]*)$' % re.escape(EN_CHARS_TO_MATCH))
 
 TABLE = str.maketrans(RU_CHARS + EN_CHARS, EN_CHARS + RU_CHARS)
 
