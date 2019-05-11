@@ -2,8 +2,9 @@ import re
 import sublime, sublime_plugin
 
 
-RU_CHARS = "ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ.йцукенгшщзхъфывапролджэячсмитьбю"
-EN_CHARS = "QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>/qwertyuiop[]asdfghjkl;'zxcvbnm,."
+# Added - to both to skip other it
+RU_CHARS = """ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ.йцукенгшщзхъфывапролджэячсмитьбю-"""
+EN_CHARS = """QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>/qwertyuiop[]asdfghjkl;'zxcvbnm,.-"""
 
 RU_RE = re.compile(r'([%s\s]*)$' % re.escape(RU_CHARS))
 EN_RE = re.compile(r'([%s\s]*)$' % re.escape(EN_CHARS))
